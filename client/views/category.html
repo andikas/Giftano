@@ -1,0 +1,141 @@
+<div class="container" style="margin-top:25px">
+	<ul class="nav nav-tabs">
+	  <li><a href="/product">Product</a></li>
+	  <li class="active"><a href="/category">Category</a></li>
+	</ul>
+
+	<h1>Category</h1>
+	<div class="row">
+		<div class="col-md-12">
+			<button class="btn btn-primary" ng-click="openCategoryForm()">Create Category</button>
+		</div>
+	</div>
+	<div class="row" style="margin-top:30px;">
+		<div class="col-md-12" id="ullist">
+			<!-- <ul id="nestedlist">
+			    <li ng-repeat="cat in categories">
+			    	<span>{{cat.name}}</span>
+			    <ul>
+			        <li><span class="connect">Gadgets</span>
+			        <ul>
+			            <li><span>Inspector Gadget </span></li>
+			            <li><span>Gadget Hackwrench</span></li>
+			            <li><span>Gadget Galaxy</span></li>
+			            <li><span>Daily Gadget </span></li>
+			            <li><span>Cheese Gadgets</span>
+			            <ul>
+			                <li><span>Bleu</span></li>
+			                <li><span>Swiss</span></li>
+			                <li><span>Havardi</span></li>
+			            </ul>
+			            </li>
+			        </ul>
+			        </li>
+			        <li><span>Gizmos</span>
+			        <ul>
+			            <li><span>Gizmo the Mogwai</span></li>
+			            <li><span>The Transform Gizmo</span></li>
+			            <li><span>Gizmondo</span></li>
+			        </ul>
+			        </li>
+			    </ul>
+			    </li>
+			</ul> -->
+		</div>
+	</div>
+	<script type="text/ng-template" id="categoryFormModal.html">
+	<div class="row">
+		<div class="col-md-12" style="padding:35px">
+			<div class="col-md-6">
+				<input type="radio" ng-model="newParentTrue" ng-value=true ng-click="setNewParent(true)" ng-selected="category.newParent == true"> New Parent<br>
+			</div>
+			<div class="col-md-6">
+  				<input type="radio" ng-model="newParentTrue" ng-value=false ng-click="setNewParent(false)"> Use Existing Parent<br>
+			</div>
+			<div ng-class="category.newParent != true? 'displayBlock' : 'displayNone'" id="listFormCategory">
+				
+			</div>
+			<form ng-submit="product._id ? updateCategory() : saveCategory()">
+			<div class="form-group" ng-show="createCategory">
+			    <label for="exampleInputParent">Parent</label>
+			    <input type="text" class="form-control" id="exampleInputParent" placeholder="Select Parent Above" readonly="true" ng-model="viewParent">
+		  	</div>
+		  	<div class="form-group">
+			    <label for="exampleInputName">Name</label>
+			    <input type="text" class="form-control" id="exampleInputName" placeholder="Enter Name" ng-model="category.name">
+		  	</div>
+		  	<button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+		</div>
+	</div>
+	</script>
+	<!-- <script type="text/ng-template" id="productDeleteFormModal.html">
+	    <form name="deleteProductForm" class="my-form" ng-submit="deleteProduct()" novalidate>
+	        <div class="modal-header">
+	            <h3 class="modal-title">Delete Product</h3>
+	        </div>
+	        <div class="modal-body">
+	            <div class="form-group">
+	                <label for="folderName">Are you sure want to delete Product {{product.title}}?</label>
+	            </div>
+	        </div>
+	        <div class="modal-footer">
+	            <button class="btn btn-danger" type="submit">Delete</button>
+	            <button class="btn btn-primary" type="button" ng-click="cancel()">cancel</button>
+	        </div>
+	    </form>
+	</script> -->
+	<style>
+		.inlinediv {
+		    display: -webkit-inline-box;
+		}
+		#nestedlist, #nestedlist ul {
+		  list-style-type: none;
+		  margin-left:0;
+		  padding-left:30px;
+		  text-indent: -4px;
+		}
+
+		/* UL Layer 1 Rules */
+		#nestedlist {
+		  font-size: 20px;
+		  font-weight:bold;
+		}
+
+		/* UL Layer 2 Rules */
+		#nestedlist ul {
+		  font-size: 18px;
+		  font-weight: normal;
+		  margin-top: 3px;
+		}
+
+		/* UL Layer 3 Rules */
+		#nestedlist ul ul {
+		  font-size: 16px;
+		}
+
+		/* UL 4 Rules */
+		#nestedlist ul ul ul {
+		  font-size: 14px;
+		}
+
+
+		ul li a {
+		  border-width: 0 0 1px 1px;
+		  border-radius: 0 0 0 10px;
+		}
+
+		.displayBlock{
+			display:block;
+		}
+		.displayNone{
+			display:none;
+		}
+		.capitalize{
+			text-transform: capitalize;
+		}
+		.grab{
+			cursor: pointer !important;
+		}
+	</style>
+</div>
