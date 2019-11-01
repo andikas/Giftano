@@ -9,7 +9,6 @@ module.controller('ProductController',
 	};
 	$scope.viewParent = '';
 	ProductService.getProduct().then(function(res) {
-		console.log('res', res);
 		$scope.products = res.data.allbooks;
 	});
 
@@ -77,15 +76,12 @@ module.controller('ProductController',
 	var el = document.getElementById('ullist');
 	$scope.createCategory = false;
 	CategoryService.getCategory().then(function(res) {
-		console.log('res', res);
 		generateHTMLList(res.data);
 		
 	});
 
 	$scope.List = "";
 	function makeList(array, root){
-		console.log('array', array);
-	    console.log('inside makelist', $scope.List);
 	    // var ul = $("<ul></ul>");
 	    // root.append(ul);
 	    $scope.List += "<ul>"

@@ -12,7 +12,6 @@ module.controller('CategoryController',
 	var el = document.getElementById('ullist');
 	$scope.createCategory = false;
 	CategoryService.getCategory().then(function(res) {
-		console.log('res', res);
 		generateHTMLList(res.data);
 		
 	});
@@ -46,7 +45,6 @@ module.controller('CategoryController',
 	}
 
 	$scope.editCategory = function (data){
-		console.log('blalbalb');
 		$scope.product = data;
 		var modalInstance = $uibModal.open({
 		    templateUrl: 'categoryFormModal.html',
@@ -57,24 +55,6 @@ module.controller('CategoryController',
 		modalInstance.result.then(function () {
 		});
 	}
-
-	// $scope.deleteProduct = function (data){
-	// 	$scope.product = data;
-	// 	var modalInstance = $uibModal.open({
-	// 	    templateUrl: 'productDeleteFormModal.html',
-	// 	    controller: 'ProductFormController',
- //            scope: $scope
-	// 	});
-
-	// 	modalInstance.result.then(function () {
-	// 		for(var i=0; i<$scope.products.length; i++){
-	// 			if ($scope.products[i]._id == $scope.product._id){
-	// 				$scope.products.splice(i, 1);
-	// 				break;
-	// 			}
-	// 		}
-	// 	});
-	// }
 
 	$scope.assignParent = function(parent, name){
 		if($scope.createCategory){
@@ -124,9 +104,7 @@ module.controller('CategoryFormController', ['$scope', '$state', 'CategoryServic
 	}
     
     $scope.saveCategory = function(){
-		console.log($scope.category)
         CategoryService.save($scope.category).then(function(res){
-        	console.log('res', res);
         	$modalInstance.close(res.data)
         });
     }
