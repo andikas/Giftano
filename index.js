@@ -12,14 +12,14 @@ app.use(express.static(__dirname + '/'));
 app.use(
   bodyParser.urlencoded({
     extended: false,
-  }),
+  })
 );
 app.use(cors());
 const port = process.env.PORT || 4000;
 app.use(
   bodyParser.json({
     limit: '50mb',
-  }),
+  })
 );
 
 require('./server/routes/route')(app);
